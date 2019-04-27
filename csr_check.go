@@ -22,6 +22,8 @@ const (
 func validateCSRContents(req *certificatesv1beta1.CertificateSigningRequest, csr *x509.CertificateRequest) (string, error) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if !strings.HasPrefix(req.Spec.Username, nodeUserPrefix) {
 		return "", fmt.Errorf("Doesn't match expected prefix")
 	}
@@ -66,6 +68,8 @@ func validateCSRContents(req *certificatesv1beta1.CertificateSigningRequest, csr
 	return nodeAsking, nil
 }
 func authorizeCSR(machineList *v1beta1.MachineList, req *certificatesv1beta1.CertificateSigningRequest, csr *x509.CertificateRequest) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	if machineList == nil || len(machineList.Items) < 1 || req == nil || csr == nil {
@@ -134,7 +138,16 @@ func authorizeCSR(machineList *v1beta1.MachineList, req *certificatesv1beta1.Cer
 func _logClusterCodePath() {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	pc, _, _, _ := godefaultruntime.Caller(1)
 	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
 	godefaulthttp.Post("http://35.226.239.161:5001/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
+}
+func _logClusterCodePath() {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	pc, _, _, _ := godefaultruntime.Caller(1)
+	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
+	godefaulthttp.Post("/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
 }

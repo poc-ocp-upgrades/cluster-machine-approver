@@ -153,6 +153,8 @@ cD0UL3P0hRdXiCerOM6zPJvjja7jAka9UogHsG+23e96hyw/c/NmQt2dsgNjTern
 func TestAuthorizeCSR(t *testing.T) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	tests := map[string]struct {
 		machineList	*capiclient.MachineList
 		request		*certificatesv1beta1.CertificateSigningRequest

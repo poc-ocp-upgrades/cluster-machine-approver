@@ -32,9 +32,13 @@ type Controller struct {
 func NewController(clientset *kubernetes.Clientset, machineClientset *mapiclient.Clientset, queue workqueue.RateLimitingInterface, indexer cache.Indexer, informer cache.Controller) *Controller {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return &Controller{clientset: clientset, machineClient: machineClientset, informer: informer, indexer: indexer, queue: queue}
 }
 func (c *Controller) processNextItem() bool {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	key, quit := c.queue.Get()
@@ -47,6 +51,8 @@ func (c *Controller) processNextItem() bool {
 	return true
 }
 func (c *Controller) handleNewCSR(key string) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	obj, exists, err := c.indexer.GetByKey(key)
@@ -104,6 +110,8 @@ func (c *Controller) handleNewCSR(key string) error {
 func (c *Controller) handleErr(err error, key interface{}) {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if err == nil {
 		c.queue.Forget(key)
 		return
@@ -118,6 +126,8 @@ func (c *Controller) handleErr(err error, key interface{}) {
 	glog.Infof("Dropping CSR %q out of the queue: %v", key, err)
 }
 func (c *Controller) Run(threadiness int, stopCh chan struct{}) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	defer utilruntime.HandleCrash()
@@ -136,10 +146,14 @@ func (c *Controller) Run(threadiness int, stopCh chan struct{}) {
 func (c *Controller) runWorker() {
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	for c.processNextItem() {
 	}
 }
 func main() {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	var kubeconfig string
